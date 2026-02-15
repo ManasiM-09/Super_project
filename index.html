@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strandcafé – German Coffee & Brunch</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            color: #1a202c;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+           background: rgba(175, 238, 238, 0.95);
+            border-bottom: 1px solid #9ed4d4;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #e8ecef;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #8b7355;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #d4a574;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #556677;
+            font-weight: 400;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            color: #8b7355;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+            padding: 6rem 5% 5rem;
+            text-align: center;
+            border-bottom: 1px solid #e8ecef;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: #8b7355;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #667788;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #d4a574 0%, #c49563 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 165, 116, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.4);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 5%;
+            background: white;
+            text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .about h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #8b7355;
+            margin-bottom: 2rem;
+        }
+
+        .about p {
+            font-size: 1.15rem;
+            color: #667788;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            line-height: 1.8;
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 5rem 5%;
+            background: linear-gradient(to bottom, #fefefe 0%, #f9fafb 100%);
+        }
+
+        .menu h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #8b7355;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menu-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e8ecef;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #8b7355;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #f0e6dc;
+            padding-bottom: 1rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .item-name {
+            font-weight: 600;
+            color: #556677;
+            font-size: 1.05rem;
+        }
+
+        .item-description {
+            font-size: 0.9rem;
+            color: #889;
+            font-style: italic;
+            margin-top: 0.2rem;
+        }
+
+        .item-price {
+            color: #d4a574;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 5%;
+            background: white;
+            text-align: center;
+        }
+
+        .gallery h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #8b7355;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            background: linear-gradient(135deg, #f5f0eb 0%, #e8dfd6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            border: 1px solid #e8ecef;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 5%;
+            background: linear-gradient(to bottom, #fefefe 0%, #f9fafb 100%);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #8b7355;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e8ecef;
+        }
+
+        .contact-info p {
+            font-size: 1.2rem;
+            color: #667788;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info strong {
+            color: #8b7355;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            padding: 2rem 5%;
+            text-align: center;
+            color: #889;
+            border-top: 1px solid #e8ecef;
+        }
+
+        footer p {
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .menu h2, .about h2, .gallery h2, .contact h2 {
+                font-size: 2rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Strand<span>Café</span></div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Über Uns</a></li>
+                <li><a href="#menu">Menü</a></li>
+                <li><a href="#gallery">Galerie</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <h1>Hora da redient Café</h1>
+        <p>Genießen Sie exquisite Kaffeespezialitäten und köstliche Brunch-Kreationen am Strand</p>
+        <a href="#menu" class="cta-button">Entdecken Sie unsere Menü</a>
+    </section>
+
+    <section class="about" id="about">
+        <h2>Über Uns</h2>
+        <p>
+            Das StrandCafé verbindet traditionelle deutsche Kaffeekultur mit der entspannten Atmosphäre eines Strandcafés. 
+            Seit 2015 verwöhnen wir unsere Gäste mit sorgfältig ausgewählten Kaffeebohnen aus nachhaltigen Anbaugebieten 
+            und frisch zubereiteten Brunch-Spezialitäten. Unser lichtdurchflutetes Ambiente mit weißen Wänden und 
+            maritimen Akzenten lädt zum Verweilen und Genießen ein.
+        </p>
+    </section>
+
+    <section class="menu" id="menu">
+        <h2>Unser Menü</h2>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <h3>☕ Kaffeespezialitäten</h3>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Espresso</div>
+                        <div class="item-description">Kräftig & aromatisch</div>
+                    </div>
+                    <div class="item-price">€2.80</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Cappuccino</div>
+                        <div class="item-description">Mit feinporigem Milchschaum</div>
+                    </div>
+                    <div class="item-price">€3.90</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Latte Macchiato</div>
+                        <div class="item-description">Geschichtet im Glas</div>
+                    </div>
+                    <div class="item-price">€4.20</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Flat White</div>
+                        <div class="item-description">Australische Spezialität</div>
+                    </div>
+                    <div class="item-price">€4.50</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Cold Brew</div>
+                        <div class="item-description">Kalt extrahiert, mild</div>
+                    </div>
+                    <div class="item-price">€4.80</div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h3>🥐 Brunch Klassiker</h3>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Bircher Müsli</div>
+                        <div class="item-description">Mit frischen Früchten</div>
+                    </div>
+                    <div class="item-price">€7.90</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Avocado Toast</div>
+                        <div class="item-description">Auf Sauerteigbrot, pochiertes Ei</div>
+                    </div>
+                    <div class="item-price">€9.50</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Frühstücksteller</div>
+                        <div class="item-description">Käse, Wurst, Brot, Aufstriche</div>
+                    </div>
+                    <div class="item-price">€12.90</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Lachs Bagel</div>
+                        <div class="item-description">Räucherlachs, Frischkäse, Rucola</div>
+                    </div>
+                    <div class="item-price">€11.50</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Pancakes</div>
+                        <div class="item-description">Mit Ahornsirup & Beeren</div>
+                    </div>
+                    <div class="item-price">€8.90</div>
+                </div>
+            </div>
+
+            <div class="menu-card">
+                <h3>🍰 Kuchen & Gebäck</h3>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Apfelstrudel</div>
+                        <div class="item-description">Hausgemacht, warm serviert</div>
+                    </div>
+                    <div class="item-price">€5.50</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Schwarzwälder Kirschtorte</div>
+                        <div class="item-description">Nach Originalrezept</div>
+                    </div>
+                    <div class="item-price">€6.20</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Buttercroissant</div>
+                        <div class="item-description">Frisch & knusprig</div>
+                    </div>
+                    <div class="item-price">€3.50</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Zitronentarte</div>
+                        <div class="item-description">Leicht & erfrischend</div>
+                    </div>
+                    <div class="item-price">€5.90</div>
+                </div>
+                <div class="menu-item">
+                    <div>
+                        <div class="item-name">Käsekuchen</div>
+                        <div class="item-description">Cremig & luftig</div>
+                    </div>
+                    <div class="item-price">€5.50</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+        <h2>Unsere Atmosphäre</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">☕</div>
+            <div class="gallery-item">🥐</div>
+            <div class="gallery-item">🌊</div>
+            <div class="gallery-item">🍰</div>
+            <div class="gallery-item">🌅</div>
+            <div class="gallery-item">🥞</div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Besuchen Sie Uns</h2>
+        <div class="contact-info">
+            <p><strong>Adresse:</strong> Strandpromenade 42, 18609 Ostseebad Binz</p>
+            <p><strong>Telefon:</strong> +49 (0) 38393 123456</p>
+            <p><strong>E-Mail:</strong> info@strandcafe-binz.de</p>
+            <p><strong>Öffnungszeiten:</strong></p>
+            <p>Montag - Freitag: 8:00 - 18:00 Uhr</p>
+            <p>Samstag - Sonntag: 9:00 - 19:00 Uhr</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 StrandCafé. Alle Rechte vorbehalten. | Impressum | Datenschutz</p>
+    </footer>
+</body>
+</html>
